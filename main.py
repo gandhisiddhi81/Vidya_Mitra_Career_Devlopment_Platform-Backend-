@@ -17,6 +17,9 @@ origins = [
     FRONTEND_URL,
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://vidya-mitra-career-devlopment-platform-r457.onrender.com",
+    "https://vidya-mitra-frontend.onrender.com",
+    "https://vidya-mitra-frontend.vercel.app",
 ]
 
 app.add_middleware(
@@ -45,6 +48,10 @@ print("="*50 + "\n")
 @app.get("/")
 async def root():
     return {"message": "VidyaMitra 2.0 Python API is running"}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "VidyaMitra 2.0 Backend"}
 
 # Include routes
 from routes import resume, training, quiz, interview, progress, ai, roles
